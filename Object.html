@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Objects</title>
+  </head>
+  <body>
+   
+    <script>
+      const product = {
+        name: 'socks',
+        price: 1090
+      };
+
+      console.log(product);
+      console.log(product.name);
+
+      product.name = 'cotton socks';
+      console.log(product);
+
+      product.newProperty = true;
+      console.log(product);
+
+      delete product.newProperty;
+      console.log(product);
+
+      console.log(typeof product);
+
+
+      const product1 ={
+        name: 'shirt',
+        'delivery-time': '1 day',
+        rating: {
+          stars: 4.5,
+          count: 87
+        },
+        fun: function function1(){
+          console.log('function inside object');
+        } // Method
+      };
+      console.log(product1);
+
+      console.log(product1['name']);
+      // console.log(product1.delivery-time); -> error
+      console.log(product1['delivery-time']);
+
+      console.log(product1.rating.count);
+      product1.fun();
+
+
+      //JSON -object
+      JSON.stringify(product1); //convert de obj in json
+      console.log( JSON.stringify(product1));
+
+      const jsonString = JSON.stringify(product1);
+      console.log(JSON.parse(jsonString)); //convert de json in js object
+
+
+      //AUTO-BOXING
+      console.log('hello'.length);
+      console.log('hello'.toUpperCase());//error for->null/undefinited
+
+      const obj1 ={ // reference that points to the message
+
+        message: 'hello'
+      };
+      const obj2 = obj1;// copy to the referece where that points -> much faster
+
+      obj1.message = 'bye';//const -> we can still change de VALUE inside the object
+      console.log(obj1);
+      console.log(obj2);//also change
+
+      const obj3 ={
+        message: 'bye'
+      };
+      console.log(obj3===obj1);//->false
+      //obj are references , don t compare the values inside the objects
+
+      console.log(obj2===obj1)//true-> has the same reference
+
+      const obj4 ={
+        message: 'bye',
+        price: 799
+      };
+      //const message= obj4.message;// shortcut
+      const {message,price} = obj4 //DESTRUCTURING
+      console.log(message);
+      console.log(price);
+
+      const obj5 = {
+       // message: message
+        message ,//shorthand property
+        // method: function fun1(){
+        //   console.log('method');
+        // }
+        method(){
+          console.log('method');//shorthand method
+        }
+      };
+      console.log(obj5);
+      obj5.method();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM</title>
+  </head>
+  <body>
+    <style>
+      .sub {
+      border: none;
+      background-color: black;
+      color: white;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-bottom: 30px;
+    }
+
+    .is-subscribed {
+      background-color: rgb(240, 240, 240);
+      color: black;
+    }
+    </style>
+    
+    <button onclick="
+       Subscribe();
+      " class="sub">Subscribe</button>
+      
+    <p>Amazon Shipping Calculator</p>
+    <input placeholder="Cost of order" class="input-cost" onkeydown="handleCost(event);">
+    <button onclick="
+      Calculate();
+    ">Calculate</button>
+    <p class="total-cost"></p>
+
+   
+    <script>
+      // String(25);
+      // console.log('25'-5);//-> covnvert automatic in numeber for * - /
+      // window.document;
+      // window.console.log('window');
+      // window.alert('ok');
+
+      function handleCost(event){
+        // console.log(event.key);
+        if(event.key==='Enter'){
+          Calculate();
+    }
+      }
+
+      function Calculate(){
+        const inputElem= document.querySelector('.input-cost');
+        let cost= Number(inputElem.value); //get the text inside the textbox 
+        if(cost<40){
+          cost = cost + 10;//let!! we change the variable
+
+        }
+        document.querySelector('.total-cost').innerHTML = `$${cost}`;
+      }
+
+      function Subscribe(){
+        const button = document.querySelector('.sub'); //!!!
+        
+        if(button.innerHTML==='Subscribe'){ // innerText -> without extra spaces
+          button.innerHTML = 'Subscribed';
+          button.classList.add('is-subscribed');//-> va fi adaugat elementului clasa respectiva in plus
+        }
+        else {
+          button.innerHTML = 'Subscribe';
+          button.classList.remove('is-subscribed');//stergem clasa
+        }
+      }
+
+
+
+
+    </script>
+  </body>
+</html>
